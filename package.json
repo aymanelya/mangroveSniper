@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@mangrovedao/mangrove.js": "^1.4.10"
+  }
+}
