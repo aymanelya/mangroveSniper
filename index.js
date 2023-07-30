@@ -1,5 +1,5 @@
 const { testnet, mainnet, ownerWallet, stratParams } = require('./config');
-const config = testnet;
+const config = stratParams.network == 'testnet' ? testnet : mainnet;
 
 const abis = require('./abis');
 const { Mangrove, ethers } = require('@mangrovedao/mangrove.js');
@@ -39,7 +39,6 @@ async function snipeOffer(offerId) {
   await mgv.approveMangrove(stratParams.trackedTokens[1]);
 
   const gasPrice = await provider.getGasPrice();
-  // console.log({ gasPrice, takerGives: offer.wants - 10 });
 
   // Snipe the offer using the information about the offer.
   let snipePromises = await market.snipe(
